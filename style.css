@@ -1,10 +1,48 @@
 .project-image {
-    height: 350px;
-    width: 350px;
+    height: 100%;
+    width: auto;
 }
+.project {
+    counter-increment: portfolio;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
 
 body {
     color: #5a5a5a;
     margin: 0;
     padding: 0;
+}
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 20px;
+    grid-auto-flow: row dense;
+    counter-reset: portfolio;
+}
+.container {
+    max-width: 1000px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+h2 {
+    padding: 0;
+    color: black;
+    margin: 0 0 5px;
+}
+.project__name::after {
+    content: counter(portfolio);
+}
+.project .project__body {
+display: none;
+}
+@media  screen and (min-width: 640px) {
+    .portfolio {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .project__body {
+        grid-column: span 4;
+    }
+    
 }
